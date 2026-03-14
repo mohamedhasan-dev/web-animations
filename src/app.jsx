@@ -1,4 +1,6 @@
 import gsap from "gsap";
+import Stagger from "./Stagger";
+
 
 const App = () => {
   const timeLine1 = gsap.timeline();
@@ -39,6 +41,7 @@ const App = () => {
           play
         </button>
       </div>
+      <Stagger />
     </>
   );
 };
