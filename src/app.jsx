@@ -1,76 +1,10 @@
 import gsap from "gsap";
-import Stagger from "./Stagger";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Nav from "./nav";
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
   useGSAP(() => {
-    gsap.to("#green-box", {
-      x: 1000,
-      rotate: 720,
-      borderRadius: "100%",
-      scrollTrigger: {
-        trigger: "#green-box",
-        start: "bottom 70%",
-        end: "+=1000",
-        scrub: 2,
-      },
-    });
-    gsap.to("#blue-box", {
-      x: 1000,
-      rotate: 720,
-      borderRadius: "100%",
-      scrollTrigger: {
-        trigger: "#green-box",
-        start: "+=200 70%",
-        end: "+=1000",
-        scrub: 2,
-      },
-    });
-    gsap.from("#red-box", {
-      y: 1000,
-      opacity: 0,
-      duration: 1.5,
-      scrollTrigger: {
-        trigger: "#red-box",
-        start: "-=1000 center",
-      },
-    });
-    gsap.from("#yello-box", {
-      y: 1000,
-      opacity: 0,
-      duration: 1.5,
-      scrollTrigger: {
-        trigger: "#yello-box",
-        start: "-=1000 center",
-      },
-    });
-    gsap.to("#red-box", {
-      x: 400,
-      borderRadius: "100%",
-      rotate: 360,
-      duration: 1.5,
-      scrollTrigger: {
-        trigger: "#red-box",
-        start: "-=780 bottom",
-        end: "top center",
-        scrub: 2,
-      },
-      ease: "power1.Out",
-    });
-    gsap.to("#yello-box", {
-      x: -400,
-      borderRadius: "100%",
-      rotate: -360,
-      duration: 1.5,
-      scrollTrigger: {
-        trigger: "#yello-box",
-        start: "-=780 bottom",
-        end: "top center",
-        scrub: 2,
-      },
-      ease: "power1.out",
-    });
     gsap.from(".para", {
       y: 20,
       opacity: 0,
@@ -79,25 +13,12 @@ const App = () => {
       scrollTrigger: {
         trigger: ".para",
         start: "top 80%",
-        markers: true,
       },
     });
   }, []);
   return (
-    <>
-      <Stagger />
-      <div
-        id="green-box"
-        className="w-20 h-20 bg-linear-120 from-green-600 to-green-300 m-5 rounded-lg"
-      ></div>
-      <div id="blue-box" className="w-20 h-20 bg-linear-120 from-sky-600 to-sky-300 m-5 rounded-sm"></div>{" "}
-      <div className="flex justify-center">
-        <div
-          id="yello-box"
-          className="w-20 h-20 bg-linear-120 from-amber-500 to-amber-200 m-5 rounded-sm justify-center"
-        ></div>
-        <div id="red-box" className="w-20 h-20 bg-linear-240 from-red-600 to-red-300 m-5 rounded-lg"></div>
-      </div>
+    <main className="mx-10 mt-10">
+      <Nav />
       <p className="para">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
         repellat in eaque perspiciatis numquam, quaerat architecto. Voluptatem
@@ -130,8 +51,10 @@ const App = () => {
         <br />
       </p>
 
-      <button className="rounded-lg bg-linear-120 from-red-500 to-amber-500 ml-100 px-10 py-2">Hello</button>
-    </>
+      <button className="rounded-lg bg-linear-120 from-red-500 to-amber-500 ml-100 px-10 py-2">
+        Hello
+      </button>
+    </main>
   );
 };
 
