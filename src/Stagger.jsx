@@ -9,7 +9,7 @@ const Stagger = () => {
         scale: 3,
         stagger: {
           grid: [17, 15],
-          amount: 1,
+          amount: 1.5,
           from: "center",
         },
       });
@@ -22,17 +22,17 @@ const Stagger = () => {
         scale: 1,
         stagger: {
           grid: [17, 15],
-          amount: 1,
+          amount: 2,
           from: "center",
         },
       });
     }
   }
-  const amnt = Array.from({ length: 255 });
+  const amnt = Array.from({ length: 240 });
   return (
     <>
       <div className="justify-center flex">
-        <div className="grid grid-cols-15 gap-1 w-3xl justify-center">
+        <div className="grid grid-cols-15 gap-2 w-3xl justify-center">
           {amnt.map(() => (
             <div className="w-3 h-3 bg-linear-120 from-green-400 to-green-200 m-3 box"></div>
           ))}

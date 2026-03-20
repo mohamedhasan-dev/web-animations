@@ -3,7 +3,7 @@ import logo from "./assets/logo.svg";
 import gsap from "gsap";
 import { useRef } from "react";
 import { SplitText } from "gsap/all";
-
+import { Link } from "react-router-dom";
 gsap.registerPlugin(SplitText);
 
 const Nav = () => {
@@ -48,7 +48,7 @@ const Nav = () => {
     <div>
       <nav className="flex justify-between items-center p-4">
         <div className="text-4xl font-semibold">
-          <a href="#home" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               src={logo}
               alt="Logo"
@@ -59,18 +59,18 @@ const Nav = () => {
               onMouseLeave={logoResetEffect}
             />
             <p ref={heroTitle}>Animated website</p>
-          </a>
+          </Link>
         </div>
         <div className="flex space-x-6" id="nav-links">
-          <a href="#" className="hover:text-blue-500 text-xl">
+          <Link to="/home" className="hover:text-blue-500 text-xl">
             Home
-          </a>
-          <a href="#" className="hover:text-blue-500 text-xl">
+          </Link>
+          <Link to="/about" className="hover:text-blue-500 text-xl">
             About
-          </a>
-          <a href="#" className="hover:text-blue-500 text-xl">
+          </Link>
+          <Link to="/contacts" className="hover:text-blue-500 text-xl">
             Contact
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
