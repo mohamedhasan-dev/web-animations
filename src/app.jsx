@@ -1,13 +1,13 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Nav from "./nav";
+import Nav from "./Nav";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contacts";
 import More from "./pages/more";
 import Stagger from "./Stagger";
-
+import Box_animations from "./Box_animations";
 
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/contacts" element={<Contact />} />
         <Route path="/home" element={<More />} />
         <Route path="/stagger" element={<Stagger />} />
+        <Route path="/boxes" element={<Box_animations />} />
       </Routes>
     </main>
   );

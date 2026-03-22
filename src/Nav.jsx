@@ -1,14 +1,14 @@
 import { useGSAP } from "@gsap/react";
 import logo from "./assets/logo.svg";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { SplitText } from "gsap/all";
 import { Link } from "react-router-dom";
 gsap.registerPlugin(SplitText);
 
 const Nav = () => {
   const heroTitle = useRef(null);
-
+  const titletimeline = useRef(null);
   useGSAP(() => {
     let titleSplit = new SplitText(heroTitle.current, { type: "chars" });
     gsap.from(titleSplit.chars, {
@@ -33,6 +33,28 @@ const Nav = () => {
       rotate: 35,
     });
   }, []);
+
+  useEffect(() => {
+    titletimeline.current = gsap.timeline({ paused: true });
+    titletimeline.current.to(heroTitle.current, {
+      backgroundImage:
+        "linear-gradient( 90deg, #34b2cb, #3bbbbf 40%, #56bdaa 100%)",
+      //backgroundClip: "text",
+      //textFillColor: "transparent",
+      duration: 0.3,
+      ease: "sine.inOut",
+    });
+  }, []);
+
+  //title hover effect
+  function titleHoverEffect() {
+    titletimeline.current.play();
+  }
+  function titleResetEffect() {
+    titletimeline.current.reverse();
+  }
+
+  //logo hover effect
   function logoHoverEffect() {
     gsap.to("#logo", {
       rotate: 35,
@@ -44,6 +66,36 @@ const Nav = () => {
       rotate: 0,
     });
   }
+
+  //Link hover effect
+  function LinkHover(e) {
+    gsap.to(e.currentTarget, {
+      backgroundImage:
+        "linear-gradient( 90deg, #34b2cb, #3bbbbf 40%, #56bdaa 100%)",
+      // borderBottomColor: "#56bdaa",
+      ease: "sine.inOut",
+      duration: 0.2,
+    });
+    gsap.to(e.currentTarget.querySelector(".underline"), {
+      scaleX: 1,
+      ease: "sine.inOut",
+      duration: 0.15,
+    });
+  }
+  function LinkReset(e) {
+    gsap.to(e.currentTarget, {
+      backgroundImage: "linear-gradient( white,white)",
+      // borderBottomColor: "transparent",
+      ease: "sine.inOut",
+      duration: 0.2,
+    });
+    gsap.to(e.currentTarget.querySelector(".underline"), {
+      scaleX: 0,
+      ease: "sine.inOut",
+      duration: 0.3,
+    });
+  }
+
   return (
     <div>
       <nav className="flex justify-between items-center p-4">
@@ -58,18 +110,43 @@ const Nav = () => {
               onMouseEnter={logoHoverEffect}
               onMouseLeave={logoResetEffect}
             />
-            <p ref={heroTitle}>Animated website</p>
+            <p
+              ref={heroTitle}
+              onMouseEnter={titleHoverEffect}
+              onMouseLeave={titleResetEffect}
+              className="bg-clip-text text-transparent bg-white"
+            >
+              Animated website
+            </p>
           </Link>
         </div>
         <div className="flex space-x-6" id="nav-links">
-          <Link to="/home" className="hover:text-blue-500 text-xl link">
+          <Link
+            to="/home"
+            className="relative text-xl link bg-clip-text text-transparent bg-white"
+            onMouseEnter={LinkHover}
+            onMouseLeave={LinkReset}
+          >
             Home
+           <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
-          <Link to="/about" className="hover:text-blue-500 text-xl link">
+          <Link
+            to="/about"
+            className="relative text-xl link bg-clip-text text-transparent bg-white"
+            onMouseEnter={LinkHover}
+            onMouseLeave={LinkReset}
+          >
             About
+           <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
-          <Link to="/contacts" className="hover:text-blue-500 text-xl link">
+          <Link
+            to="/contacts"
+            className="relative text-xl link bg-clip-text text-transparent bg-white"
+            onMouseEnter={LinkHover}
+            onMouseLeave={LinkReset}
+          >
             Contact
+          <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
         </div>
       </nav>
