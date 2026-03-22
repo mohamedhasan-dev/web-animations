@@ -29,6 +29,7 @@ const Anim_btn = (props) => {
         }}
         onMouseEnter={animate}
         onMouseLeave={reanimate}
+        onClick={props.onClick}
       >
         {props.text}
       </button>

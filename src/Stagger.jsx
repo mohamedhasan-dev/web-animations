@@ -34,7 +34,7 @@ const Stagger = () => {
       <div className="justify-center flex">
         <div className="grid grid-cols-15 gap-2 w-3xl justify-center">
           {amnt.map(() => (
-            <div className="w-3 h-3 bg-linear-120 from-green-400 to-green-200 m-3 box"></div>
+            <div className="w-3 h-3 bg-linear-120 from-green-400 to-green-200 m-3 box rounded-full"></div>
           ))}
           <div className="col-span-15 flex justify-center">
             <button

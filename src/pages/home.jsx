@@ -2,9 +2,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Anim_btn from "../components/animated_button";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 const Home = () => {
+  const navigate = useNavigate();
   useGSAP(() => {
     console.log("GSAP animation setup");
     gsap.from(".para", {
@@ -49,7 +51,15 @@ const Home = () => {
         <br />
       </p>
       <div className="flex justify-center">
-        <Anim_btn text={"Click me"} from={"#ff0000"} to={"#ffff00"} />
+        <Anim_btn
+          text={"Click for more"}
+          from={"#ff0000"}
+          to={"#ffff00"}
+          onClick={() => {
+            navigate("/home");
+            console.log("Button clicked, navigating to /more");
+          }}
+        />
       </div>
     </main>
   );

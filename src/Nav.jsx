@@ -62,13 +62,13 @@ const Nav = () => {
           </Link>
         </div>
         <div className="flex space-x-6" id="nav-links">
-          <Link to="/home" className="hover:text-blue-500 text-xl">
+          <Link to="/home" className="hover:text-blue-500 text-xl link">
             Home
           </Link>
-          <Link to="/about" className="hover:text-blue-500 text-xl">
+          <Link to="/about" className="hover:text-blue-500 text-xl link">
             About
           </Link>
-          <Link to="/contacts" className="hover:text-blue-500 text-xl">
+          <Link to="/contacts" className="hover:text-blue-500 text-xl link">
             Contact
           </Link>
         </div>
