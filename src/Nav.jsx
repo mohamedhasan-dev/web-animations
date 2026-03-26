@@ -9,6 +9,8 @@ gsap.registerPlugin(SplitText);
 const Nav = () => {
   const heroTitle = useRef(null);
   const titletimeline = useRef(null);
+  const isLinkCliked = useRef(false);
+
   useGSAP(() => {
     let titleSplit = new SplitText(heroTitle.current, { type: "chars" });
     gsap.from(titleSplit.chars, {
@@ -83,19 +85,20 @@ const Nav = () => {
     });
   }
   function LinkReset(e) {
-    gsap.to(e.currentTarget, {
-      backgroundImage: "linear-gradient( white,white)",
-      // borderBottomColor: "transparent",
-      ease: "sine.inOut",
-      duration: 0.2,
-    });
-    gsap.to(e.currentTarget.querySelector(".underline"), {
-      scaleX: 0,
-      ease: "sine.inOut",
-      duration: 0.3,
-    });
+    if (!isLinkCliked.current) {
+      gsap.to(e.currentTarget, {
+        backgroundImage: "linear-gradient( white,white)",
+        // borderBottomColor: "transparent",
+        ease: "sine.inOut",
+        duration: 0.2,
+      });
+      gsap.to(e.currentTarget.querySelector(".underline"), {
+        scaleX: 0,
+        ease: "sine.inOut",
+        duration: 0.3,
+      });
+    }
   }
-
   return (
     <div>
       <nav className="flex justify-between items-center p-4">
@@ -126,27 +129,30 @@ const Nav = () => {
             className="relative text-xl link bg-clip-text text-transparent bg-white"
             onMouseEnter={LinkHover}
             onMouseLeave={LinkReset}
+            //onClick={()=>isLinkCliked.current = true}
           >
             Home
-           <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
+            <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
           <Link
             to="/about"
             className="relative text-xl link bg-clip-text text-transparent bg-white"
             onMouseEnter={LinkHover}
             onMouseLeave={LinkReset}
+            //onClick={()=>isLinkCliked.current = true}
           >
             About
-           <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
+            <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
           <Link
             to="/contacts"
             className="relative text-xl link bg-clip-text text-transparent bg-white"
             onMouseEnter={LinkHover}
             onMouseLeave={LinkReset}
+            //onClick={()=>isLinkCliked.current = true}
           >
             Contact
-          <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
+            <span className="underline absolute -bottom-1 left-0 w-full h-0.5 bg-[#56bdaa] origin-center scale-x-0"></span>
           </Link>
         </div>
       </nav>

@@ -11,6 +11,16 @@ const More = () => {
         bgImage="bg-[url(./assets/bg-img.png)]"
         navigate={() => navigate("/stagger")}
       />
+      <Card
+        title="Scroll Animation"
+        bgImage="bg-[url(./assets/Screenshot 2026-03-25 222121.png)]"
+        navigate={() => navigate("/scroll")}
+      />
+      <Card
+        title="SVG Animation"
+        bgImage="bg-[url(./assets/Screenshot 2026-03-25 222121.png)]"
+        navigate={() => navigate("/svg")}
+      />
     </div>
   );
 };

@@ -6,8 +6,9 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contacts";
 import More from "./pages/more";
-import Stagger from "./Stagger";
-import Box_animations from "./Box_animations";
+import Stagger from "./Animations/Stagger";
+import Box_animations from "./Animations/Box_animations";
+import SVG_anim from "./Animations/SVG_anim.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 const App = () => {
@@ -20,8 +21,10 @@ const App = () => {
         <Route path="/contacts" element={<Contact />} />
         <Route path="/home" element={<More />} />
         <Route path="/stagger" element={<Stagger />} />
-        <Route path="/boxes" element={<Box_animations />} />
+        <Route path="/scroll" element={<Box_animations />} />
+        <Route path="/svg" element={<SVG_anim />} />
       </Routes>
+
     </main>
   );
 };

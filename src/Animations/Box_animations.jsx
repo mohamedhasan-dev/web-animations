@@ -75,6 +75,9 @@ const Box_animationns = () => {
 
   return (
     <div>
+      <div className="h-65 flex justify-center items-center">
+        <p className="text-white text-3xl">Scroll Down⏬</p>
+      </div>
       <div
         id="green-box"
         className="w-20 h-20 bg-linear-120 from-green-600 to-green-300 m-5 rounded-lg"
@@ -93,6 +96,7 @@ const Box_animationns = () => {
           className="w-20 h-20 bg-linear-240 from-red-600 to-red-300 m-5 rounded-lg"
         ></div>
       </div>
+      <div className="h-screen"></div>
     </div>
   );
 };
