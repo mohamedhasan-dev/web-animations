@@ -1,9 +1,13 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger.js";
+import { useRef } from "react";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Box_animationns = () => {
+  const videoRef = useRef(null);
+
   useGSAP(() => {
     gsap.to("#green-box", {
       x: 1000,
@@ -71,7 +75,18 @@ const Box_animationns = () => {
       },
       ease: "power1.out",
     });
-  },[]);
+
+    videoRef.current.onloadedmetadata = () => gsap.to(videoRef.current, {
+      scrollTrigger: {
+        pin: true,
+        trigger: 'video',
+        start: "top top",
+        end: "+=3000",
+        scrub: true,
+      },
+      currentTime: videoRef.current.duration * 0.2,
+    });
+  }, []);
 
   return (
     <div>
@@ -97,6 +112,17 @@ const Box_animationns = () => {
         ></div>
       </div>
       <div className="h-screen"></div>
+      <section className="absolute left-0 top-0 w-fuull h-full overflow-hidden inset-0 object-bottom object-cover pointer-events-none">
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          preload="auto"
+          className="w-50% h-50% object-cover mix-blend-screen "
+        >
+          <source src="/sharingan_scrub.mp4" type="video/mp4" />
+        </video>
+      </section>
     </div>
   );
 };

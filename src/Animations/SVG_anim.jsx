@@ -9,6 +9,7 @@ const SVG_anim = () => {
   //Variables and Refs
   const morphTl = useRef(null);
   const drawTl = useRef(null);
+  const drawflag = useRef(false);
 
   useEffect(() => {
     MorphSVGPlugin.convertToPath("#Circle, #Triangle");
@@ -34,7 +35,13 @@ const SVG_anim = () => {
   //functions
 
   function draw() {
-    drawTl.current.restart();
+    if (!drawflag.current) {
+      drawTl.current.play();
+      drawflag.current = true;
+    } else {
+      drawTl.current.reverse();
+      drawflag.current = false;
+    }
   }
 
   return (
